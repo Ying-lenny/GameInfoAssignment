@@ -1,6 +1,10 @@
 <resources>
+
     <string name="app_name">GameInfo</string>
     <string name="button_addGameInfo">Add GameInfo</string>
     <string name="hint_gameInfoTitle">GameInfo Title</string>
     <string name="hint_gameInfoDescription">Description </string>
+    <string name="menu_addGameInfo">Add</string>
+    <string name="menu_cancelGameInfo">Cancel</string>
+
 </resources>
