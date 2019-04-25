@@ -21,18 +21,33 @@ class GameInfoActivity : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gameinfo)
         app = application as MainApp
+        var edit = false
 
-        btnAdd.setOnClickListener() {
+
+        if (intent.hasExtra("gameInfo_edit")) {
+            edit = true
+            btnAdd.setText(R.string.save_gameInfo)
+            gameInfo = intent.extras.getParcelable<GameInfoModel>("gameInfo_edit")
+            gameInfoTitle.setText(gameInfo.title)
+            description.setText(gameInfo.description)
+        }
+
+        btnAdd.setOnClickListener()
+        {
             gameInfo.title = gameInfoTitle.text.toString()
-            gameInfo.description= description.text.toString()
+            gameInfo.description = description.text.toString()
             if (gameInfo.title.isNotEmpty()) {
-                app.gameInfos.add(gameInfo.copy())
-                info("add Button Pressed: $gameInfo")
-                app.gameInfos.forEach{ info("add Button Pressed: ${it.title}")}
+                if (edit) {
+                    app.gameInfos.update(gameInfo.copy())
+                } else {
+                    app.gameInfos.create(gameInfo.copy())
+                }
+                info("add Button Pressed: $gameInfoTitle")
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
-            } else {
-                toast("Please enter a title ya dummy")
+            }
+            else {
+                toast (R.string.enter_gameInfo_title)
             }
         }
 

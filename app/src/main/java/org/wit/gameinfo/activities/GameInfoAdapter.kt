@@ -8,7 +8,12 @@ import kotlinx.android.synthetic.main.card_gameinfo.view.*
 import org.wit.gameinfo.R
 import org.wit.gameinfo.models.GameInfoModel
 
-class GameInfoAdapter constructor(private var gameInfos: List<GameInfoModel>) : RecyclerView.Adapter<GameInfoAdapter.MainHolder>() {
+interface GameInfoListener {
+    fun onGameInfoClick(gameInfo: GameInfoModel)
+}
+
+class GameInfoAdapter constructor(private var gameInfos: List<GameInfoModel>,
+                                  private val listener: GameInfoListener) : RecyclerView.Adapter<GameInfoAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_gameinfo, parent, false))
@@ -16,16 +21,17 @@ class GameInfoAdapter constructor(private var gameInfos: List<GameInfoModel>) : 
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val gameInfo = gameInfos[holder.adapterPosition]
-        holder.bind(gameInfo)
+        holder.bind(gameInfo, listener)
     }
 
     override fun getItemCount(): Int = gameInfos.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(gameInfo: GameInfoModel) {
+        fun bind(gameInfo: GameInfoModel, listener: GameInfoListener) {
             itemView.gameInfoTitle.text = gameInfo.title
             itemView.description.text = gameInfo.description
+            itemView.setOnClickListener {listener.onGameInfoClick(gameInfo)}
         }
     }
 }
