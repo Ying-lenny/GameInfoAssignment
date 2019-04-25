@@ -26,6 +26,7 @@ class GameInfoMemStore : GameInfoStore, AnkoLogger {
         if (foundGameInfo != null) {
             foundGameInfo.title = gameInfo.title
             foundGameInfo.description = gameInfo.description
+            foundGameInfo.image = gameInfo.image
             logAll()
         }
     }

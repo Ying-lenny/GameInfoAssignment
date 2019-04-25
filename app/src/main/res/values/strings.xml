@@ -8,5 +8,7 @@
     <string name="menu_cancelGameInfo">Cancel</string>
     <string name="enter_gameInfo_title"> Please enter a Game\'s Title ya dummy</string>
     <string name="save_gameInfo"> Save Game\'s Info </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_gameInfo_image">Select Game image</string>
 
 </resources>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.card_gameinfo.view.*
 import org.wit.gameinfo.R
+import org.wit.gameinfo.helpers.readImageFromPath
 import org.wit.gameinfo.models.GameInfoModel
 
 interface GameInfoListener {
@@ -31,6 +32,7 @@ class GameInfoAdapter constructor(private var gameInfos: List<GameInfoModel>,
         fun bind(gameInfo: GameInfoModel, listener: GameInfoListener) {
             itemView.gameInfoTitle.text = gameInfo.title
             itemView.description.text = gameInfo.description
+            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, gameInfo.image))
             itemView.setOnClickListener {listener.onGameInfoClick(gameInfo)}
         }
     }
