@@ -35,6 +35,9 @@ class GameInfoActivity : AppCompatActivity(), AnkoLogger {
             gameInfoTitle.setText(gameInfo.title)
             description.setText(gameInfo.description)
             gameInfoImage.setImageBitmap(readImageFromPath(this, gameInfo.image))
+            if(gameInfo.image != null) {
+                chooseImage.setText(R.string.change_gameInfo_image)
+            }
             edit = true
             btnAdd.setText(R.string.save_gameInfo)
         }
@@ -68,14 +71,22 @@ class GameInfoActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_gameinfo, menu)
+        if (edit && menu != null) menu.getItem(0).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
+
+            R.id.item_delete -> {
+                app.gameInfos.delete(gameInfo)
+                toast(R.string.gameInfoDeleted)
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }
+
         }
         return super.onOptionsItemSelected(item)
     }
@@ -87,6 +98,7 @@ class GameInfoActivity : AppCompatActivity(), AnkoLogger {
                 if (data != null) {
                     gameInfo.image = data.getData().toString()
                     gameInfoImage.setImageBitmap(readImage(this, resultCode, data))
+                    chooseImage.setText(R.string.change_gameInfo_image)
                 }
             }
         }

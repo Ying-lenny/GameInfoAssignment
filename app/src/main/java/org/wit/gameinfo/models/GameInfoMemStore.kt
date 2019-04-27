@@ -21,6 +21,10 @@ class GameInfoMemStore : GameInfoStore, AnkoLogger {
         gameInfos.add(gameInfo)
     }
 
+    override fun delete(gameInfo: GameInfoModel) {
+        gameInfos.remove(gameInfo)
+    }
+
     override fun update(gameInfo: GameInfoModel) {
         var foundGameInfo: GameInfoModel? = gameInfos.find { p -> p.id == gameInfo.id}
         if (foundGameInfo != null) {

@@ -7,4 +7,7 @@ interface GameInfoStore
     fun create(gameInfo: GameInfoModel)
 
     fun update(gameInfo: GameInfoModel)
+
+    fun delete(gameInfo: GameInfoModel)
+
 }

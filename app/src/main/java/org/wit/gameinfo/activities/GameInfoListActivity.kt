@@ -23,7 +23,7 @@ class GameInfoListActivity: AppCompatActivity(), GameInfoListener {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = GameInfoAdapter(app.gameInfos.findAll(), this)
+        loadGameInfos()
 
         toolbarMain.title = title
         setSupportActionBar(toolbarMain)
@@ -46,9 +46,18 @@ class GameInfoListActivity: AppCompatActivity(), GameInfoListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        //recyclerView is a widget in activity_placemark_list.xml
-        recyclerView.adapter?.notifyDataSetChanged()
+        //recyclerView is a widget in activity_gameInfo_list.xml
+        loadGameInfos()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun loadGameInfos() {
+        saveGameInfos(app.gameInfos.findAll())
+    }
+
+    fun saveGameInfos (gameInfos: List<GameInfoModel>) {
+        recyclerView.adapter = GameInfoAdapter(gameInfos, this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 }
 
