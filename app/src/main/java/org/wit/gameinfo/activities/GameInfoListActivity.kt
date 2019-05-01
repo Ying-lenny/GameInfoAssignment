@@ -37,6 +37,7 @@ class GameInfoListActivity: AppCompatActivity(), GameInfoListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> startActivityForResult<GameInfoActivity>(0)
+            R.id.item_gallery -> startActivityForResult<GameInfoGalleryActivity>(0)
         }
         return super.onOptionsItemSelected(item)
     }

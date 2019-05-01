@@ -3,15 +3,17 @@
     <string name="app_name">GameInfo</string>
     <string name="button_addGameInfo">Add this Game\'s Info</string>
     <string name="hint_gameInfoTitle">Game Title</string>
-    <string name="hint_gameInfoDescription">Game Description </string>
+    <string name="hint_gameInfoDescription">Game Description</string>
     <string name="menu_addGameInfo">Add</string>
     <string name="menu_cancelGameInfo">Cancel</string>
     <string name="enter_gameInfo_title">Enter a Game\'s Title ya dummy</string>
-    <string name="save_gameInfo"> Save Game\'s Info </string>
-    <string name="button_addImage"> Add Image </string>
+    <string name="save_gameInfo">Save Game\'s Info</string>
+    <string name="button_addImage">Add Image</string>
     <string name="select_gameInfo_image">Select Game Image</string>
     <string name="change_gameInfo_image">Change Image</string>
     <string name="menu_deleteGameInfo">Delete</string>
-    <string name="gameInfoDeleted">"Game Information Deleted"</string>
+    <string name="gameInfoDeleted">Game Info Deleted</string>
+    <string name="title_activity_game_info_gallery">Game Box Art Gallery</string>
+    <string name="change_image">Change Image</string>
 
 </resources>
